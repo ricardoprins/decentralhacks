@@ -44,12 +44,13 @@ uint public votersCount;    // counter cache for voters
 
 // variable that keeps signer's public key for the electionb
 bytes32[] voterSigs;
+address _signerAddress;
 constructor(address signerAddress) public {
   addCandidate("Candidate 1");
 	addCandidate("Candidate 2");
-
 //  addVoter(100);   addvoter() function is not used in constructor statement because it invokes require(), but the contract hasn't beem created before constructor call
 //  addVoter(200);
+_signerAddress=signerAddress;
   }
 
 // candidates are pre populated for the election (privately intitialized by the contract)
@@ -114,7 +115,7 @@ function signatureVerification(uint _candidateId, bytes32 signature) public retu
             // following statement recreates the message that was signed on the client
             bytes32 message = prefixed(keccak256(abi.encodePacked(_candidateId, address(this))));
 
-            if(recoverSigner(message, signature) == signerAddress) {
+            if(recoverSigner(message, signature) == _signerAddress) {
               emit verificationSuccess();    //event call
               return true;
             }
