@@ -42,11 +42,9 @@ event newVoter(
 uint public candidatesCount;   // counter cache for candidates
 uint public votersCount;    // counter cache for voters
 
-address signerAddress;// variable that keeps signer's public key for the electionb
+// variable that keeps signer's public key for the electionb
 bytes32[] voterSigs;
-constructor() public {
-  // insert public key or signer here
-  signerAddress = 0x1D6EC0e866bC2094c82f77bc40529c131b2599f7;
+constructor(address signerAddress) public {
   addCandidate("Candidate 1");
 	addCandidate("Candidate 2");
 
