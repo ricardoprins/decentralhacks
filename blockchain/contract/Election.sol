@@ -83,10 +83,9 @@ for(uint i=counterSum;i<counterSum+counter;i++)
 
         // require that they haven't voted before
         require(!voters[msg.sender].hasVoted);
-
-        // require a valid candidate
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
 **/
+        require a valid candidate
+        require(_candidateId > 0 && _candidateId <= candidatesCount);
         // require a valid signature
         for(i=0;i<counter;i++){
         require(signatureVerification(_candidateId[i],_blindsignature[i]),"signature incorrect");
