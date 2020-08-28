@@ -5,9 +5,10 @@ App = {
   signerAccount: '0xb0c4df6950ef538df20f89d4857842fb93b8343931a416d127173cad7cca9345',  //demo signer's off chain private key (not present in any node) [address - 0xB131dFD7Bd2edfACCf04531A8181da0EAa1641Ad]
   // pass live blockchain election contract address here
   contractAddress: '0xC88A235f6E63384DB9f4075A6AffD53CEB5794aB',  //  deployed demo contract Address on mumbai testnet
- 
+ signerPublicKey: '0xB131dFD7Bd2edfACCf04531A8181da0EAa1641Ad', //signer's public key
+ electionId: 0, //initialized
   // pass live blockchain factory contract address here  
-  factorycontractAddress: '0x241512C692Dea2eA84B13F706Eca8E3424881C2f',
+  factoryContractAddress: '0x241512C692Dea2eA84B13F706Eca8E3424881C2f',
   
 
   init: function() {
@@ -75,40 +76,35 @@ web3 = new Web3(App.web3Provider);
 
 render: function() {
   
+  
   // Load account data
-  var account = web3.eth.getAccounts()[0];
+  var account = web3.eth.accounts[0];
+  console.log(account);
   
       App.account = account;
       $("#accountAddress").html("Your Account: " + account);
-    
-  
+   
   //console.log("accounts[1] - " + web3.eth.accounts[1]);
 },
 
-castVote: function() {    // function is called  during vote casting
-    var candidateId = 2;
-    var cID = [1,2];
-    var sig = [];
-    console.log(cID[0]," + ",cId[1]);
-    for (var i =0 ; i< cID.length ; i++){
-      
-      var blindSig = App.PrepareBlindVote(cID[i], App.contractAddress);
-      console.log("Returned signature : " + blindSig);
-      sig[i] = blindSig;
-    }
+authorizeBallotTransaction: function() {    // function is called  during vote casting
+  var candidateId = 2;  //demo id initialied just for demonstration 
+  
     
+    var blindSig = App.PrepareBlindVote(candidateId, App.contractAddress);
+    console.log("Returned signature : " + blindSig);
+     
 
-    App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(...cID, ...sig, { from: App.account });
-    }).then(function(result) {
-      // Wait for votes to update
-      //Reload everything when a new vote is recorded
-     App.init();
-    }).catch(function(err) {
-      console.error(err);
-    });
-  },
-
+  App.contracts.Election.deployed().then(function(instance) {
+    return instance.vote(candidateId,blindSig, { from: App.account });  //call with individual ballot data (will send bulk in future)
+  }).then(function(result) {
+    // Wait for votes to update
+    //Reload everything when a new vote is recorded
+   App.init();
+  }).catch(function(err) {
+    console.error(err);
+  });
+},
 PrepareBlindVote: function(candidateId, contractAdd) {
     var hash = web3.utils.soliditySha3({type: 'uint', value: candidateId}, {type: 'address', value: contractAdd}); // calculate the sha3 of given input parameters in the same way solidity would (arguments will be ABI converted and tightly packed before being hashed)
 
@@ -126,6 +122,7 @@ signBlindVote: function(hash) {
     return signObject.signature;
 },
 
+
 createVoter: function() {   // function is called  during voter registration
       var voterNationalID = $('#voterNID').val();
       console.log(voterNationalID);
@@ -141,7 +138,21 @@ createVoter: function() {   // function is called  during voter registration
       }).catch(function(err) {
         console.error(err);
       });
+    },
+    populateElection: function() {    // function is called  during vote casting
+      App.electionId = App.electionId + 1; // increment global variable value (is this how javascript integer increment work?)
+   
+      App.contracts.ElectionFactory.deployed().then(function(instance) {
+        return instance.createNewElection(App.signerPublicKey,App.electionId, { from: App.account });  //call with individual ballot data (will send bulk in future)
+      }).then(function(result) {
+        // Wait for votes to update
+        //Reload everything when a new vote is recorded
+       App.init();
+      }).catch(function(err) {
+        console.error(err);
+      });
     }
+
 }
 
   $(function() {
