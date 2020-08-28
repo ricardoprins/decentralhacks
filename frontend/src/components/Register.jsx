@@ -11,7 +11,7 @@ const Register = ({ history }) => {
         await app
           .auth()
           .createUserWithEmailAndPassword(email.value, password.value);
-        history.push("/");
+        history.push("/user");
       } catch (error) {
         alert(error);
       }

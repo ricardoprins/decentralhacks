@@ -1,14 +1,14 @@
 import React from "react";
 import app from "./base";
 
-const User = () => {
+const Auditor = () => {
   return (
     <>
-      <h1>User</h1>
+      <h1>Auditor</h1>
       <button onClick={() => app.auth().signOut()}>Sign out</button>
-      <button>Vote</button>
+      {/* Authorize ballots component */}
     </>
   );
 };
 
-export default User;
+export default Auditor;
