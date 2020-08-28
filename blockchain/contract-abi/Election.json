@@ -23,32 +23,6 @@
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_candidateId",
-				"type": "uint256[]"
-			},
-			{
-				"name": "_blindsignature",
-				"type": "bytes32[]"
-			},
-			{
-				"name": "counter",
-				"type": "uint256"
-			},
-			{
-				"name": "_combinedHash",
-				"type": "bytes32"
-			}
-		],
-		"name": "submitVotes",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [],
 		"name": "candidatesCount",
@@ -87,6 +61,24 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_candidateId",
+				"type": "uint256"
+			},
+			{
+				"name": "_blindsignature",
+				"type": "bytes32"
+			}
+		],
+		"name": "submitVotes",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

@@ -8,7 +8,7 @@ contract Election {
 	string name;
 	uint voteCount;
 }
-uint counterSum=0;
+uint iterate=0;
 
 
 
@@ -40,7 +40,7 @@ uint public candidatesCount;   // counter cache for candidates
 //uint public votersCount;    // counter cache for voters
 
 // variable that keeps signer's public key for the electionb
-bytes32[] voterSigs;
+//bytes32[] voterSigs;
 address _signerAddress;
 constructor(address signerAddress) public {
   addCandidate("Candidate 1");
@@ -66,8 +66,8 @@ voters[msg.sender] = Voter(_nationalID,true,false,"");   // (NID, eligibility, h
 emit newVoter(_nationalID);
 }
 **/
-function submitVotes(uint[] _candidateId, bytes32[] _blindsignature,uint256 counter,bytes32 _combinedHash) public onlyVerifier(msg.sender) {
-    
+function submitVotes(uint256 _candidateId, bytes32 _blindsignature) public onlyVerifier(msg.sender) {
+/**     
 for(uint i=counterSum;i<counterSum+counter;i++)       
 {
     voterSigs[i]=_blindsignature[i];
@@ -83,24 +83,22 @@ for(uint i=counterSum;i<counterSum+counter;i++)
         require(!voters[msg.sender].hasVoted);
 **/
        // require a valid candidate
-        require(_candidateId[i] > 0 && _candidateId[i] <= candidatesCount);
+        require(_candidateId > 0 && _candidateId <= candidatesCount);
         // require a valid signature
-        for(i=0;i<counter;i++){
-        require(signatureVerification(_candidateId[i],_blindsignature[i]),"signature incorrect");
+        //for(i=0;i<counter;i++){
+        require(signatureVerification(_candidateId,_blindsignature),"signature incorrect");
 
         // record that voter's verified blind signature
-        voters[i].signedBlindedVote = _blindsignature[i];
+        voters[iterate].signedBlindedVote = _blindsignature;
 
         // record that voter has voted
        // voters[i].hasVoted = true;
 
         // update candidate vote Count
-        candidates[_candidateId[i]].voteCount++;
+        candidates[_candidateId].voteCount++;
         
         //trigger voted event
-        emit votedEvent(_candidateId[i]);
-    }
-    counterSum+=counter;
+        emit votedEvent(_candidateId);
 
 }
 
