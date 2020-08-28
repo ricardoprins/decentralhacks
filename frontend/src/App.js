@@ -7,6 +7,8 @@ import {
   Home,
   Login,
   Register,
+  Auditor,
+  Organizer,
 } from "./components";
 import { AuthProvider } from "./components/auth";
 import PrivateRoute from "./components/PrivateRoute";
@@ -22,6 +24,8 @@ function App() {
             <Route path="/login" exact component={() => <Login />} />
             <Route path="/register" exact component={() => <Register />} />
             <PrivateRoute path="/user" exact component={() => <User />} />
+            <Route path="/auditor" exact component={() => <Auditor />} />
+            <Route path="/organizer" exact component={() => <Organizer />} />
           </Switch>
           <TheFooter />
         </Router>

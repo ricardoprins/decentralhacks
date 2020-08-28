@@ -6,6 +6,7 @@ const Organizer = () => {
     <>
       <h1>Organizer</h1>
       <button onClick={() => app.auth().signOut()}>Sign out</button>
+      <button onClick={() => alert("Election created")}>Create Election</button>
       {/* Organizer workpanel components */}
     </>
   );
