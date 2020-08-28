@@ -22,6 +22,20 @@
 		"constant": false,
 		"inputs": [
 			{
+				"name": "_newFee",
+				"type": "uint256"
+			}
+		],
+		"name": "changeFee",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
 				"name": "signerAddress",
 				"type": "address"
 			},
@@ -37,8 +51,23 @@
 				"type": "address"
 			}
 		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "creationFee",
+				"type": "uint256"
+			},
+			{
+				"name": "_grandMaster",
+				"type": "address"
+			}
+		],
 		"payable": false,
 		"stateMutability": "nonpayable",
-		"type": "function"
+		"type": "constructor"
 	}
 ]

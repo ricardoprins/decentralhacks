@@ -1,5 +1,5 @@
 pragma solidity ^0.4.23;
-pragma experimental ABIEncoderV2;
+//pragma experimental ABIEncoderV2;
 
 contract Election {
 // Model a Candidate
@@ -14,9 +14,6 @@ uint counterSum=0;
 
 //Model a voter
 struct Voter {
-  uint NID;     // govt issued national identification number of candidate
-  bool eligibility;      // stores the valid list of voters during registration
-  bool hasVoted;    // updates when vote is successfully casted on blockchain
   bytes32 signedBlindedVote;  // blind signature of casted vote
 }
 // Candidate ID mapped with candidate struct
@@ -29,18 +26,18 @@ mapping(uint => Voter) public voters;
 event votedEvent(
   uint indexed _candidateId
   );
+
+  modifier onlyVerifier(address _toCheck){
+    require(_toCheck == _signerAddress,"you are b=not the election verifier");
+    _;
+  }
 // event for logging successful verification
 
 event verificationSuccess();  // emits when signature is successfully verified
 
-// event for logging successful voter registration
-event newVoter(
-  uint indexed _nationalID
-);
-
 // Store Candidates Count
 uint public candidatesCount;   // counter cache for candidates
-uint public votersCount;    // counter cache for voters
+//uint public votersCount;    // counter cache for voters
 
 // variable that keeps signer's public key for the electionb
 bytes32[] voterSigs;
@@ -52,6 +49,7 @@ constructor(address signerAddress) public {
 //  addVoter(200);
 _signerAddress=signerAddress;
   }
+
 
 // candidates are pre populated for the election (privately intitialized by the contract)
 function addCandidate(string _name) private {
@@ -68,7 +66,7 @@ voters[msg.sender] = Voter(_nationalID,true,false,"");   // (NID, eligibility, h
 emit newVoter(_nationalID);
 }
 **/
-function vote(uint[] _candidateId, bytes32[] _blindsignature,uint256 counter,bytes32 _combinedHash) public {
+function submitVotes(uint[] _candidateId, bytes32[] _blindsignature,uint256 counter,bytes32 _combinedHash) public onlyVerifier(msg.sender) {
     
 for(uint i=counterSum;i<counterSum+counter;i++)       
 {
@@ -84,8 +82,8 @@ for(uint i=counterSum;i<counterSum+counter;i++)
         // require that they haven't voted before
         require(!voters[msg.sender].hasVoted);
 **/
-        require a valid candidate
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
+       // require a valid candidate
+        require(_candidateId[i] > 0 && _candidateId[i] <= candidatesCount);
         // require a valid signature
         for(i=0;i<counter;i++){
         require(signatureVerification(_candidateId[i],_blindsignature[i]),"signature incorrect");
@@ -94,7 +92,7 @@ for(uint i=counterSum;i<counterSum+counter;i++)
         voters[i].signedBlindedVote = _blindsignature[i];
 
         // record that voter has voted
-        voters[i].hasVoted = true;
+       // voters[i].hasVoted = true;
 
         // update candidate vote Count
         candidates[_candidateId[i]].voteCount++;
