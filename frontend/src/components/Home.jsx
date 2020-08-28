@@ -14,9 +14,7 @@ function Home() {
           </div>
           <div class="col-lg-5">
             <h1 class="font-weight-light">Home</h1>
-            <p>
-              OutOfIdea voting platform is a nice voting platform.
-            </p>
+            <p>OutOfIdea voting platform is a nice voting platform.</p>
           </div>
         </div>
       </div>
