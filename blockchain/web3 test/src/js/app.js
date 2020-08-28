@@ -2,12 +2,12 @@ App = {
   web3Provider: null,
   contracts: {},
   account: '0x0',
-  signerAccount: '2417296936bbb66335c6c7b267709f39531ae5ca7427894df10a3ad7496747c9',  //demo signer's off chain private key (not present in any node) [address - 0x1D6EC0e866bC2094c82f77bc40529c131b2599f7]
+  signerAccount: '0xb0c4df6950ef538df20f89d4857842fb93b8343931a416d127173cad7cca9345',  //demo signer's off chain private key (not present in any node) [address - 0xB131dFD7Bd2edfACCf04531A8181da0EAa1641Ad]
   // pass live blockchain election contract address here
-  contractAddress: '0xF57A347F0b475985fC74f15B040A0F6B76E841e1',  // locally deployed demo contract Address
+  contractAddress: '0xC88A235f6E63384DB9f4075A6AffD53CEB5794aB',  //  deployed demo contract Address on mumbai testnet
  
   // pass live blockchain factory contract address here  
-  factorycontractAddress: '0x63a71A952411c2e7aAf570409Eada6e2810fe20e',
+  factorycontractAddress: '0x241512C692Dea2eA84B13F706Eca8E3424881C2f',
   
 
   init: function() {
