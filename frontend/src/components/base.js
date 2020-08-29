@@ -1,8 +1,7 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
 
-const functions = require("firebase-functions");
-const config = functions.config();
+const config = require("./config").default;
 
 const app = firebase.initializeApp({
   apiKey: config.base.api,

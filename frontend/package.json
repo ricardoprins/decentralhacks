@@ -27,6 +27,7 @@
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "eslint-plugin-react": "^7.20.6",
     "express": "^4.17.1",
     "fast-crc32c": "^2.0.0",
