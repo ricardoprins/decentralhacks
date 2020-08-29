@@ -1,5 +1,5 @@
 <p align="center">
-<img src="frontend/src/components/banner.jpeg" /><br>
+<img src="frontend/src/components/banner.jpeg" /><br></p>
 
 # ElectroCrypt - The Augmented E-Voting Platform
 
