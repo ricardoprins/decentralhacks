@@ -1,15 +1,18 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
+const functions = require("firebase-functions");
+const config = functions.config();
+
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyDHgRtXh_aogGH9HXCHfpL1RvEFebq2Mfw",
-  authDomain: "decentralhacks-ooi.firebaseapp.com",
-  databaseURL: "https://decentralhacks-ooi.firebaseio.com",
-  projectId: "decentralhacks-ooi",
-  storageBucket: "decentralhacks-ooi.appspot.com",
-  messagingSenderId: "7786490553",
-  appId: "1:7786490553:web:3b4a034ae69f770cbd4968",
-  measurementId: "G-BXJE79F1NQ",
+  apiKey: config.base.api,
+  authDomain: config.base.dom,
+  databaseURL: config.base.db,
+  projectId: config.base.project,
+  storageBucket: config.base.storage,
+  messagingSenderId: config.base.sender,
+  appId: config.base.appid,
+  measurementId: config.base.mid,
 });
 
 export default app;
