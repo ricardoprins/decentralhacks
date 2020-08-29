@@ -33,7 +33,13 @@ The system creates a bridge between decentralized **Matic Blockchain Network** w
 
 ## Tech stack
 
-|                                                 |                                                      |                                                    |                                                       |
-| ----------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
 | <img src="frontend/src/components/matic.png" /> | <img src="frontend/src/components/truffle.png" />    | <img src="frontend/src/components/solidity.png" /> | <img src="frontend/src/components/w3js.png" />        |
+| ----------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
 | <img src="frontend/src/components/react.png" /> | <img src="frontend/src/components/typescript.png" /> | <img src="frontend/src/components/firebase.png" /> | <img src="frontend/src/components/googlecloud.png" /> |
+
+## Our team
+
+|                                            | <img src="frontend/src/components/ricardo.png" /> |                                               |                                               |
+| ------------------------------------------ | ------------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| [Anjum Rashid](https://github.com/bijoy26) | [Ricardo Prins](https://github.com/ricardoprins)  | [Temitayo Daniel](https://github.com/bijoy26) | [Gaurav Tiwari](https://github.com/gauravtwr) |
+| Project Manager                            | Full-stack Developer                              | Blockchain Developer                          | UI Designer                                   |
