@@ -4,6 +4,7 @@
 # ElectroCrypt - The Augmented E-Voting Platform
 
 (_solution designed for the DecentralHacks+HackerEarth hackathon_)
+The name ElectroCrypt is not permanent, and will be changed soon.
 
 ## Overview
 
