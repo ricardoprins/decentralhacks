@@ -24,4 +24,6 @@ yarn-error.log*
 
 .firebase/
 
+src/components/credentials.ts
+src/components/credentials
 src/components/env.json
