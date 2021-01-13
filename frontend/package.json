@@ -18,7 +18,7 @@
     "async": "^3.2.0",
     "async-each-series": "^1.1.0",
     "async-limiter": "^2.0.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "backo2": "^1.0.2",
     "balanced-match": "^1.0.0",
     "base64id": "^2.0.0",
